@@ -1,8 +1,13 @@
-from urllib import request
+from flask import Flask, render_template, flash, request
 
-from flask import Flask, render_template  # render_template - чтобы templates подгружал
+# render_template - чтобы templates подгружал
+# flash это типа ответ юзеру на взаимодействие с интерфейсом
+
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'sdfq4gv34qhgbvqqqqqqqqba'
+# секретный ключ типа как {% csrf_token %}
+# значение придумываем сами
 
 manu = [
     {'name': 'Установка', 'url': 'install-flask'},
@@ -18,6 +23,11 @@ def index():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        if len(request.form['username']) > 2:  # если имя больше 2 символов, теперь прописать условие в contact.html
+            flash('Отправлено')
+        else:
+            flash('Ошибка')
     return render_template('contact.html')
 
 
