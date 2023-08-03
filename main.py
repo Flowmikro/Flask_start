@@ -10,7 +10,7 @@ def index():
 
 @app.route('/name/<username>')  # динамический url
 def username(username):  # передаем аргумент
-    return f'Имя: {username}'  # например  http://127.0.0.1:5000/name/islam -> Имя: islam
+    return f'Имя: {username}'  # например:  http://127.0.0.1:5000/name/islam -> Имя: islam
 
 
 # @app.route('/info')
