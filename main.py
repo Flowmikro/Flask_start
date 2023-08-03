@@ -1,3 +1,5 @@
+from urllib import request
+
 from flask import Flask, render_template  # render_template - чтобы templates подгружал
 
 app = Flask(__name__)
@@ -12,6 +14,11 @@ manu = [
 @app.route('/')  # с помощью декоратора прописываем url
 def index():
     return render_template('index.html', menu=manu)
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    return render_template('contact.html')
 
 
 @app.route('/name/<username>')  # динамический url
