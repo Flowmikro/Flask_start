@@ -50,6 +50,7 @@ def close_db(error):  # закрываем соединение с БД
     if hasattr(g, 'link_db'):
         g.link_db.close()
 
+
 @app.route('/')  # с помощью декоратора прописываем url
 def index():
     db= get_db()
